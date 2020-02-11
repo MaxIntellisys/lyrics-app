@@ -1,0 +1,95 @@
+:root {
+  --primary-color: #009688;
+  --secondary-color: #ffab00;
+  --letter-color: #1a237e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--letter-color);
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15%;
+  background-color: var(--primary-color);
+  padding: 25px 0;
+}
+.header h1,
+h3 {
+  margin: 0;
+}
+
+.form {
+  position: relative;
+  width: 500px;
+  max-width: 100%;
+  margin-top: 10px;
+}
+.form input {
+  border: 2px solid var(--letter-color);
+  border-radius: 50px;
+  font-size: 16px;
+  padding: 15px 30px;
+  width: 100%;
+  color: var(--letter-color);
+}
+.form input:focus {
+  border: 2px solid var(--secondary-color);
+  outline: 0;
+  border-radius: 50px;
+}
+
+.form button,
+.view-btn {
+  position: absolute;
+  top: 6.5px;
+  right: 10px;
+  background-color: var(--secondary-color);
+  border: 0;
+  border-radius: 50px;
+  outline: 0;
+  font-size: 16px;
+  padding: 10px 15px;
+  color: var(--letter-color);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 80%;
+  padding: 30px 0;
+}
+
+.song {
+  position: relative;
+  width: 400px;
+  max-width: 100%;
+  margin-top: 30px;
+  list-style: none;
+}
+
+.view-btn {
+  position: absolute;
+  top: -6px;
+  right: 30px;
+  height: 37px;
+}
