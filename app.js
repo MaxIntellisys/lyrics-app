@@ -2,14 +2,25 @@ class Model {
     constructor() {
         this.baseURL = 'https://api.lyrics.ovh';
     }
-
+    /**
+     * Fetches 15 songs related to a given term
+     * @param {string} term search term to look for
+     * @returns array of objects with the song info
+     * @memberof Model
+     */
     async searchSongs(term) {
         const res = await fetch(`${this.baseURL}/suggest/${term}`)
         const data = await res.json()
 
         return data.data
     }
-
+    /**
+     * Fetches the lyrics for a song
+     * @param {string} artist artist name
+     * @param {string} songTitle name of the song
+     * @returns the lyrics for a song
+     * @memberof Model 
+     */
     async getLyrics(artist, songTitle) {
         const res = await fetch(`${this.baseURL}/v1/${artist}/${songTitle}`);
         const data = await res.json()
@@ -21,6 +32,11 @@ class Model {
 
 
 class View {
+    /**
+     * Creates an instance of View.
+     * Setup and renders the initial elements.
+     * @memberof View
+     */
     constructor() {
         this.app = this.getElement('#app')
 
@@ -48,18 +64,33 @@ class View {
 
         this.app.append(this.header, this.results)
     }
-
+    /**
+     * Grabs an element with a matching selector
+     * @param {string} selector css selector like a tag, .class or #id
+     * @returns the matching element
+     * @memberof View
+     */
     getElement(selector) {
         const element = document.querySelector(selector)
         return element
     }
-
+    /**
+     * Creates an HTML element
+     * @param {string} tag html tag name
+     * @param {string} classname class name (optional)
+     * @returns newly created element
+     * @memberof View
+     */
     create(tag, classname) {
         const element = document.createElement(tag)
         if (classname) { element.classList.add(classname) }
         return element
     }
-
+    /**
+     * Creates a component with multiple elements for each song that the array has.
+     * @param {string} songs an array of objects with the songs info
+     * @memberof View
+     */
     createSongsList(songs) {
         songs.forEach((song) => {
             const li = this.create('li', 'song')
@@ -80,6 +111,13 @@ class View {
 }
 
 class Controller {
+    /**
+     * Creates an instance of Controller
+     * which integrates data into elements and listen for DOM events
+     * @param {class} model contains all the data for the app
+     * @param {class} view handles creation and manipulation of the DOM elements
+     * @memberof Controller
+     */
     constructor(model, view) {
         this.model = model
         this.view = view
